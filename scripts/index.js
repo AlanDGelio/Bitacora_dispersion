@@ -1,39 +1,26 @@
-const words = [
-  "elefante",
-  "tigre",
-  "jirafa",
-  "hipopótamo",
-  "león",
-  "rinoceronte",
-  "zebra",
-  "cocodrilo",
-  "panda",
-  "koala",
-  "canguro",
-  "búfalo",
-  "águila",
-  "pingüino",
-  "oso",
-  "lobo",
-  "serpiente",
-  "camello",
-  "delfín",
-  "ardilla",
-];
+import { words, words2, words3, words4} from "./constants/constants";
 
 const wordElement = document.getElementById("word");
+const wordElement2 = document.getElementById("word2");
+const wordElement3 = document.getElementById("word3");
+const wordElement4 = document.getElementById("word4");
+const texts = [words, words2, words3, words4];
 
-function showRandomWord() {
+function showRandomWord(element, texts) {
   // Selecciona una palabra aleatoria
-  const randomWord = words[Math.floor(Math.random() * words.length)];
+  const randomText = texts[Math.floor(Math.random() * texts.length)];
 
   // Oculta la palabra actual, cambia el texto y la muestra nuevamente
-  wordElement.classList.remove("show");
+  element.classList.remove("show");
   setTimeout(() => {
-    wordElement.textContent = randomWord;
-    wordElement.classList.add("show");
+    element.innerHTML = randomText;
+    element.classList.add("show");
   }, 500); // Tiempo suficiente para que la transición de opacidad ocurra
 }
 
 // Llama a showRandomWord cada 2 segundos
-setInterval(showRandomWord, 2000);
+setInterval(() => showRandomWord(wordElement, texts), 5000);
+setInterval(() => showRandomWord(wordElement2, texts), 2000);
+setInterval(() => showRandomWord(wordElement3, texts), 2000);
+setInterval(() => showRandomWord(wordElement4, texts), 2000);
+
